@@ -39,7 +39,8 @@ jobs:
         aws --version
         echo ""
         echo "🌎 Current AWS Region:"
-        aws configure get region
+        echo "Region (from env): $AWS_DEFAULT_REGION"
+        echo "Region (from CLI): $(aws configure get region 2>/dev/null || echo 'Not set in config file')"
         echo ""
         echo "👤 Session details:"
         aws sts get-caller-identity --output table
